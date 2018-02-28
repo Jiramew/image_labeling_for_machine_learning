@@ -166,7 +166,7 @@ class MainView extends Component {
             console.log(save_data);
             MainView.saveText(save_data, this.current_file);
             self.isSaved = true;
-            document.title = "Notepad - " + this.current_file;
+            document.title = "Labeling - " + this.current_file;
         }
     }
 
