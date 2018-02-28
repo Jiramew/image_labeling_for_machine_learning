@@ -11,3 +11,7 @@ export function get_label_from_path(path) {
 export function get_label_from_final_data(data, index) {
     return data[index].label;
 }
+
+export function get_use_from_final_data(data, index) {
+    return data[index].use;
+}

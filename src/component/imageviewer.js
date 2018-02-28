@@ -1,10 +1,16 @@
 import React, {Component} from 'react';
-import {withStyles} from 'material-ui/styles';
 import Paper from 'material-ui/Paper';
-import Typography from 'material-ui/Typography';
-import TextField from 'material-ui/TextField';
-import {get_filename_from_path, get_label_from_path, get_label_from_final_data} from '../common';
 import Button from 'material-ui/Button';
+import Switch from 'material-ui/Switch';
+import TextField from 'material-ui/TextField';
+import Typography from 'material-ui/Typography';
+
+import {withStyles} from 'material-ui/styles';
+import {
+    get_filename_from_path,
+    get_label_from_final_data,
+    get_use_from_final_data
+} from '../common';
 
 const styles = {
     card: {
@@ -18,17 +24,16 @@ const styles = {
 class ImageViewer extends Component {
     constructor(props) {
         super(props);
-        console.log('init', this.state, this.props);
         this.state = {
             current_index: this.props.current_index,
             current_label: undefined
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleClick = this.handleClick.bind(this);
+        this.handleSwitch = this.handleSwitch.bind(this);
     }
 
     componentDidMount() {
-        console.log('did mount', this.state, this.props);
         this.setState({
             current_index: this.props.current_index,
             current_label: undefined
@@ -39,8 +44,11 @@ class ImageViewer extends Component {
         this.setState({current_label: event.target.value});
     }
 
+    handleSwitch(event, checked) {
+        this.props.handleSwitchChange(checked, this.props.current_index);
+    }
+
     handleClick() {
-        console.log(this.state, this.props);
         this.props.handleLabelChange(this.state.current_label, this.props.current_index);
     }
 
@@ -80,6 +88,12 @@ class ImageViewer extends Component {
                             onClick={this.handleClick}>
                         Correct
                     </Button>
+                    <Switch onChange={this.handleSwitch}
+                            defaultChecked={1 === get_use_from_final_data(this.props.final_data, this.props.current_index)}
+                            key={1 === get_use_from_final_data(this.props.final_data, this.props.current_index)}
+                            label="In-Use"
+                            color="primary">
+                    </Switch>
                 </Paper>
             );
         }

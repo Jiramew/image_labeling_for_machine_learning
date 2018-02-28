@@ -20,7 +20,6 @@ class FileList extends Component {
     }
 
     render() {
-        console.log("table", this.props);
         let render_file_list = (
             <Paper className="paper">
                 <Typography align="center" variant="title" className="fileListTitle">
@@ -40,6 +39,7 @@ class FileList extends Component {
                             <TableCell>ID</TableCell>
                             <TableCell>Filename</TableCell>
                             <TableCell>Label</TableCell>
+                            <TableCell>In-Use</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -49,6 +49,7 @@ class FileList extends Component {
                                     <TableCell>{n.id}</TableCell>
                                     <TableCell>{n.path}</TableCell>
                                     <TableCell>{n.label}</TableCell>
+                                    <TableCell>{n.use}</TableCell>
                                 </TableRow>
                             );
                         })}
