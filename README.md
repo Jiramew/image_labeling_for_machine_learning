@@ -19,3 +19,4 @@ Download from release.
 1. First: `npm install`
 2. Webpack: `npm run postinstall`, and change `index.html` to use `bundle.js` built in last step.
 3. Start electron: `npm start`
+4. Package: `electron-packager .`

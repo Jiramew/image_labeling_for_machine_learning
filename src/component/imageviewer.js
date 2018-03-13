@@ -95,12 +95,12 @@ class ImageViewer extends Component {
                             color="primary">
                     </Switch>
                 </Paper>
-            );
+            )
         }
         return (
             render_image_viewer
         )
     }
-}
+};
 
 export default withStyles(styles)(ImageViewer);

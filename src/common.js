@@ -4,7 +4,7 @@ export function get_filename_from_path(path) {
 }
 
 export function get_label_from_path(path) {
-    let reg = /image_([^a-z])_15*/;
+    let reg = /image_(.+)_\d*/;
     return path.match(reg)[1];
 }
 
