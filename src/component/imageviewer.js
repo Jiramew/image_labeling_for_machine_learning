@@ -101,6 +101,6 @@ class ImageViewer extends Component {
             render_image_viewer
         )
     }
-};
+}
 
 export default withStyles(styles)(ImageViewer);

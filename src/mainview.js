@@ -129,7 +129,9 @@ class MainView extends Component {
 
     //如果需要保存，弹出保存对话框询问用户是否保存当前文档
     askSaveIfNeed() {
+        console.log(this.state.final_data);
         if (this.isSaved) return;
+        if (this.state.final_data.length === 0) return;
         const response = dialog.showMessageBox(remote.getCurrentWindow(), {
             message: 'Do you want to save the current document?',
             type: 'question',
