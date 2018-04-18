@@ -5,7 +5,13 @@ export function get_filename_from_path(path) {
 
 export function get_label_from_path(path) {
     let reg = /image_(.+)_\d*/;
-    return path.match(reg)[1];
+    let path_clean = path.replace(/^.*[\\\/]/, '');
+    let match = path_clean.match(reg);
+    if (match === null) {
+        return ""
+    } else {
+        return path_clean.match(reg)[1];
+    }
 }
 
 export function get_label_from_final_data(data, index) {

@@ -4,7 +4,7 @@
 Download from release.
 
 ## Usage
-1. <kbd>Ctrl/⌘+O</kbd> to Open Image files.(\*.png/\*.jpg) (PS: The name of images files to be labeled should has the format of `image_{label}_timestamp.***`)
+1. <kbd>Ctrl/⌘+O</kbd> to Open Image files.(\*.png/\*.jpg) (PS: If the image files are pre-labeled, the filename should follow the format of `image_{label}_timestamp.png/jpg, or the label won't be recognized`)
 2. <kbd>Ctrl/⌘+Alt+O</kbd> to Open saved label file.(\*.ljson)
 3. <kbd>Ctrl/⌘+S</kbd> to save label file.(\*.ljson)
 4. When the images have been loaded, use <kbd>&larr;</kbd> and <kbd>&rarr;</kbd> arrow keys to navigate from image to image.
