@@ -3,6 +3,9 @@
 ## Install
 Download from release.
 
+## Screenshot
+ ![image](https://github.com/Jiramew/image_labeling_for_machine_learning/raw/master/github_image_readme.png)
+
 ## Usage
 1. <kbd>Ctrl/⌘+O</kbd> to Open Image files.(\*.png/\*.jpg) (PS: If the image files are pre-labeled, the filename should follow the format of `image_{label}_timestamp.png/jpg, or the label won't be recognized`)
 2. <kbd>Ctrl/⌘+Alt+O</kbd> to Open saved label file.(\*.ljson)
