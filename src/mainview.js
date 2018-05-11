@@ -174,7 +174,8 @@ class MainView extends Component {
         if (new_label !== undefined) {
             let final_data_copy = this.state.final_data;
             final_data_copy[index].label = new_label;
-            this.setState({final_data: final_data_copy});
+            let next_index = this.state.current_index + 1;
+            this.setState({final_data: final_data_copy, current_index: next_index});
         }
     }
 
