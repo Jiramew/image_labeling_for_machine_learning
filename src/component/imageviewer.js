@@ -24,6 +24,7 @@ const styles = {
 class ImageViewer extends Component {
     constructor(props) {
         super(props);
+        this.props.onRef(this);
         this.state = {
             current_index: this.props.current_index,
             current_label: undefined
@@ -46,10 +47,12 @@ class ImageViewer extends Component {
 
     handleSwitch(event, checked) {
         this.props.handleSwitchChange(checked, this.props.current_index);
+        this.setState({current_label: undefined});
     }
 
     handleClick() {
         this.props.handleLabelChange(this.state.current_label, this.props.current_index);
+        this.setState({current_label: undefined});
     }
 
     render() {
@@ -77,7 +80,8 @@ class ImageViewer extends Component {
                     <TextField
                         id="label_input"
                         label="label_input"
-                        defaultValue={get_label_from_final_data(this.props.final_data, this.props.current_index)}
+                        // defaultValue={get_label_from_final_data(this.props.final_data, this.props.current_index)}
+                        value={(this.state.current_label !== undefined) ? this.state.current_label : get_label_from_final_data(this.props.final_data, this.props.current_index)}
                         key={get_label_from_final_data(this.props.final_data, this.props.current_index)}
                         className="textField"
                         margin="normal"

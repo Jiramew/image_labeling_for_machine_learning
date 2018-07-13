@@ -124,7 +124,7 @@ function createWindow() {
         click() {
             mainWindow.webContents.send('action', 'correct');
         },
-        accelerator: 'Enter'
+        accelerator: 'Alt+,'
     }));
 
     Menu.setApplicationMenu(menu);

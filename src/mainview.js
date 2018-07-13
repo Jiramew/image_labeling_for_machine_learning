@@ -26,6 +26,7 @@ class MainView extends Component {
         this.listener = this.listener.bind(this);
         this.labelChange = this.labelChange.bind(this);
         this.switchChange = this.switchChange.bind(this);
+        this.onRef = this.onRef.bind(this);
         ipcRenderer.on('action', this.listener);
     }
 
@@ -117,7 +118,8 @@ class MainView extends Component {
                 break;
             case 'correct':
                 if (this.state.final_data.length !== 0 && this.state.current_index + 1 < this.state.final_data.length) {
-                    this.setState({current_index: this.state.current_index + 1})
+                    this.image_child.handleClick();
+                    // this.refs.correct_button.this.setState({current_index: this.state.current_index + 1})
                 }
                 break;
             case 'exiting':
@@ -187,6 +189,10 @@ class MainView extends Component {
         }
     }
 
+    onRef(ref) {
+        this.image_child = ref
+    };
+
     render() {
         return (
             <Grid container className="root">
@@ -197,7 +203,8 @@ class MainView extends Component {
                                       current_index={this.state.current_index}/>
                         </Grid>
                         <Grid item xs={12}>
-                            <ImageViewer final_data={this.state.final_data}
+                            <ImageViewer onRef={this.onRef}
+                                         final_data={this.state.final_data}
                                          current_index={this.state.current_index}
                                          handleLabelChange={this.labelChange}
                                          handleSwitchChange={this.switchChange}/>

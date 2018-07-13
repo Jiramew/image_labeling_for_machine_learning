@@ -38,6 +38,7 @@ class FileList extends Component {
                         <TableRow>
                             <TableCell>ID</TableCell>
                             <TableCell>Filename</TableCell>
+                            <TableCell>Glance</TableCell>
                             <TableCell>Label</TableCell>
                             <TableCell>In-Use</TableCell>
                         </TableRow>
@@ -48,6 +49,7 @@ class FileList extends Component {
                                 <TableRow key={n.id}>
                                     <TableCell>{n.id}</TableCell>
                                     <TableCell>{n.path}</TableCell>
+                                    <TableCell><img src={n.path} height={30} width={90}/></TableCell>
                                     <TableCell>{n.label}</TableCell>
                                     <TableCell>{n.use}</TableCell>
                                 </TableRow>
