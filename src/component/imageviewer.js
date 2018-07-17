@@ -93,6 +93,7 @@ class ImageViewer extends Component {
                     />
                     <Button color="primary"
                             className="button"
+                            disabled={get_use_from_final_data(this.props.final_data, this.props.current_index) === 0}
                             onClick={this.handleClick}>
                         Correct
                     </Button>

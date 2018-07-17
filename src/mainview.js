@@ -120,13 +120,13 @@ class MainView extends Component {
                 }
                 break;
             case 'correct':
-                if (this.state.final_data.length !== 0 && this.state.current_index + 1 < this.state.final_data.length) {
+                if (this.state.final_data.length !== 0 && this.state.current_index + 1 <= this.state.final_data.length) {
                     this.image_child.handleClick();
                     // this.refs.correct_button.this.setState({current_index: this.state.current_index + 1})
                 }
                 break;
             case 'switch':
-                if (this.state.final_data.length !== 0 && this.state.current_index + 1 < this.state.final_data.length) {
+                if (this.state.final_data.length !== 0 && this.state.current_index + 1 <= this.state.final_data.length) {
                     this.image_child.handleSwitchSimple();
                     // this.refs.correct_button.this.setState({current_index: this.state.current_index + 1})
                 }
@@ -190,7 +190,11 @@ class MainView extends Component {
             let final_data_copy = this.state.final_data;
             final_data_copy[index].label = new_label;
             let next_index = this.state.current_index + 1;
-            this.setState(Object.assign({}, this.state, {final_data: final_data_copy, current_index: next_index}));
+            if (index + 1 !== this.state.final_data.length) {
+                this.setState(Object.assign({}, this.state, {final_data: final_data_copy, current_index: next_index}));
+            } else {
+                this.setState(Object.assign({}, this.state, {final_data: final_data_copy}));
+            }
         }
     }
 
@@ -199,7 +203,7 @@ class MainView extends Component {
             let final_data_copy = this.state.final_data;
             final_data_copy[index].use = new_switch ? 1 : 0;
             let next_index = this.state.current_index + 1;
-            this.setState(Object.assign({}, this.state, {final_data: final_data_copy, current_index: next_index}));
+            this.setState(Object.assign({}, this.state, {final_data: final_data_copy}));
         }
     }
 
