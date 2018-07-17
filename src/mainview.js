@@ -49,7 +49,7 @@ class MainView extends Component {
                     for (let i = 0; i < files.length; i++) {
                         final_data.push({id: i, path: files[i], use: 1, label: get_label_from_path(files[i])})
                     }
-                    this.setState({final_data: final_data, current_index: 0});
+                    this.setState(Object.assign({}, this.state, {final_data: final_data, current_index: 0}));
                     document.title = "Labeling Tool - loaded new image files";
                 }
                 this.isSaved = false;
@@ -77,7 +77,10 @@ class MainView extends Component {
                         });
                     }
 
-                    this.setState({final_data: json_info.data, current_index: current_index});
+                    this.setState(Object.assign({}, this.state, {
+                        final_data: json_info.data,
+                        current_index: current_index
+                    }));
                     document.title = "Labeling Tool - " + ljson_file;
                 }
                 this.isSaved = false;
@@ -88,32 +91,32 @@ class MainView extends Component {
                 break;
             case 'prev':
                 if (this.state.final_data.length !== 0 && this.state.current_index - 1 >= 0) {
-                    this.setState({current_index: this.state.current_index - 1})
+                    this.setState(Object.assign({}, this.state, {current_index: this.state.current_index - 1}))
                 }
                 break;
             case 'prev10':
                 if (this.state.final_data.length !== 0 && this.state.current_index - 10 >= 0) {
-                    this.setState({current_index: this.state.current_index - 10})
+                    this.setState(Object.assign({}, this.state, {current_index: this.state.current_index - 10}))
                 }
                 break;
             case 'prev100':
                 if (this.state.final_data.length !== 0 && this.state.current_index - 100 >= 0) {
-                    this.setState({current_index: this.state.current_index - 100})
+                    this.setState(Object.assign({}, this.state, {current_index: this.state.current_index - 100}))
                 }
                 break;
             case 'next':
                 if (this.state.final_data.length !== 0 && this.state.current_index + 1 < this.state.final_data.length) {
-                    this.setState({current_index: this.state.current_index + 1})
+                    this.setState(Object.assign({}, this.state, {current_index: this.state.current_index + 1}))
                 }
                 break;
             case 'next10':
                 if (this.state.final_data.length !== 0 && this.state.current_index + 10 < this.state.final_data.length) {
-                    this.setState({current_index: this.state.current_index + 10})
+                    this.setState(Object.assign({}, this.state, {current_index: this.state.current_index + 10}))
                 }
                 break;
             case 'next100':
                 if (this.state.final_data.length !== 0 && this.state.current_index + 100 < this.state.final_data.length) {
-                    this.setState({current_index: this.state.current_index + 100})
+                    this.setState(Object.assign({}, this.state, {current_index: this.state.current_index + 100}))
                 }
                 break;
             case 'correct':
@@ -173,11 +176,15 @@ class MainView extends Component {
     }
 
     labelChange(new_label, index) {
-        if (new_label !== undefined) {
+        console.log(new_label, index, this.state.final_data, this.state.final_data[index]);
+        if (new_label !== undefined || this.state.final_data[index].label !== "") {
+            if (new_label === undefined) {
+                new_label = this.state.final_data[index].label;
+            }
             let final_data_copy = this.state.final_data;
             final_data_copy[index].label = new_label;
             let next_index = this.state.current_index + 1;
-            this.setState({final_data: final_data_copy, current_index: next_index});
+            this.setState(Object.assign({}, this.state, {final_data: final_data_copy, current_index: next_index}));
         }
     }
 
@@ -185,7 +192,7 @@ class MainView extends Component {
         if (new_switch !== undefined) {
             let final_data_copy = this.state.final_data;
             final_data_copy[index].use = new_switch ? 1 : 0;
-            this.setState({final_data: final_data_copy});
+            this.setState(Object.assign({}, this.state, {final_data: final_data_copy}));
         }
     }
 

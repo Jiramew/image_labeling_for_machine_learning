@@ -35,24 +35,20 @@ class ImageViewer extends Component {
     }
 
     componentDidMount() {
-        this.setState({
-            current_index: this.props.current_index,
-            current_label: undefined
-        })
     }
 
     handleChange(event) {
-        this.setState({current_label: event.target.value});
+        this.setState(Object.assign({}, this.state, {current_label: event.target.value}));
     }
 
     handleSwitch(event, checked) {
         this.props.handleSwitchChange(checked, this.props.current_index);
-        this.setState({current_label: undefined});
+        this.setState(Object.assign({}, this.state, {current_label: undefined}));
     }
 
     handleClick() {
         this.props.handleLabelChange(this.state.current_label, this.props.current_index);
-        this.setState({current_label: undefined});
+        this.setState(Object.assign({}, this.state, {current_label: undefined}));
     }
 
     render() {
