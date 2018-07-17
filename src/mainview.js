@@ -125,6 +125,12 @@ class MainView extends Component {
                     // this.refs.correct_button.this.setState({current_index: this.state.current_index + 1})
                 }
                 break;
+            case 'switch':
+                if (this.state.final_data.length !== 0 && this.state.current_index + 1 < this.state.final_data.length) {
+                    this.image_child.handleSwitchSimple();
+                    // this.refs.correct_button.this.setState({current_index: this.state.current_index + 1})
+                }
+                break;
             case 'exiting':
                 this.askSaveIfNeed();
                 ipcRenderer.sendSync('reqaction', 'exit');
@@ -192,7 +198,8 @@ class MainView extends Component {
         if (new_switch !== undefined) {
             let final_data_copy = this.state.final_data;
             final_data_copy[index].use = new_switch ? 1 : 0;
-            this.setState(Object.assign({}, this.state, {final_data: final_data_copy}));
+            let next_index = this.state.current_index + 1;
+            this.setState(Object.assign({}, this.state, {final_data: final_data_copy, current_index: next_index}));
         }
     }
 

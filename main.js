@@ -127,6 +127,14 @@ function createWindow() {
         accelerator: 'Alt+,'
     }));
 
+    menu.items[1].submenu.append(new MenuItem({
+        label: "Check InUse",
+        click() {
+            mainWindow.webContents.send('action', 'switch');
+        },
+        accelerator: 'Alt+.'
+    }));
+
     Menu.setApplicationMenu(menu);
 
     mainWindow.on('close', (e) => {

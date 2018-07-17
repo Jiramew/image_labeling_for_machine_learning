@@ -46,6 +46,13 @@ class ImageViewer extends Component {
         this.setState(Object.assign({}, this.state, {current_label: undefined}));
     }
 
+    handleSwitchSimple() {
+        let current_inuse = this.props.final_data[this.props.current_index].use;
+        let new_checked = current_inuse ? 0 : 1;
+        this.props.handleSwitchChange(new_checked, this.props.current_index);
+        this.setState(Object.assign({}, this.state, {current_label: undefined}));
+    }
+
     handleClick() {
         this.props.handleLabelChange(this.state.current_label, this.props.current_index);
         this.setState(Object.assign({}, this.state, {current_label: undefined}));
@@ -76,6 +83,7 @@ class ImageViewer extends Component {
                     <TextField
                         id="label_input"
                         label="label_input"
+                        disabled={get_use_from_final_data(this.props.final_data, this.props.current_index) === 0}
                         // defaultValue={get_label_from_final_data(this.props.final_data, this.props.current_index)}
                         value={(this.state.current_label !== undefined) ? this.state.current_label : get_label_from_final_data(this.props.final_data, this.props.current_index)}
                         key={get_label_from_final_data(this.props.final_data, this.props.current_index)}
