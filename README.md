@@ -1,4 +1,4 @@
-# A image file labeling tool for machine learning and deeplearning based on electron.
+# An image file labeling tool for machine learning and deeplearning based on electron.
 
 ## Install
 Download from release of both Mac OS and Windows version.
